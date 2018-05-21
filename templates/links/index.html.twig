@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% include 'navigation.inc.html.twig' %}
+    {% include 'body.header.inc.html.twig' %}
+
+    {% for link in links %}
+<div class="col-lg-6 col-md-6">
+    <div class="panel panel-green">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-3">
+                    <i class="fa fa-link fa-5x"></i>
+                </div>
+                <div class="col-xs-9 text-right">
+                    <div class="huge">
+{{ link.nom }}
+                    </div>
+                    <div>
+{% include 'modify.inc.html.twig' %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-lg-12">
+                    <a href="" class="text-success">tag1</a> / <a href="" class="text-success">tag2</a> / <a href="" class="text-success">tag3</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+{{ link.description|truncate(200) }}
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-footer">
+            <span class="pull-left">
+                <i class="fa fa-arrow-circle-right"></i> <a class="text-success" target="_blank" href="{{ link.cible }}">{{ link.cible }}</a>
+            </span>
+            <div class="clearfix"></div>
+        </div>
+        
+    </div>
+</div>
+    {% endfor %}
+    
+    {% include 'body.footer.inc.html.twig' %}
+{% endblock %}
